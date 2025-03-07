@@ -97,13 +97,16 @@ const FileUploader = () => {
 
                     <Button
                         variant="contained"
+                        sx={{
+                            mt: 2,
+                            width: "100%",
+                        }}
                         color="primary"
                         onClick={handleUpload}
                         disabled={loading}
                         startIcon={!loading && <CloudUploadIcon />}
-                        sx={{ mt: 2, width: "100%" }}
                     >
-                        {loading ? <CircularProgress size={24} color="inherit" /> : "Upload"}
+                        {loading ? <CircularProgress size={24}/> : "Upload"}
                     </Button>
 
                     {message && <Alert severity="info" sx={{ mt: 2 }}>{message}</Alert>}
