@@ -251,12 +251,6 @@
     color: #bbb;
 }
 
-.darkMode button {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #555;
-}
-
 .darkMode input {
     background-color: #222;
     color: #fff;
@@ -298,7 +292,7 @@
     color: #5a4a42;
 }
 
-.lightMode button {
+.lightMode button:not(.MuiButton-root) {
     background-color: #fff;
     color: #000;
     border: 1px solid #ccc;
