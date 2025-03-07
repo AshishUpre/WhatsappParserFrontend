@@ -1,6 +1,13 @@
 import { AppBar, Toolbar, Typography, Button, Box, Switch, createTheme } from "@mui/material";
 import { Link, Outlet } from "react-router-dom";
 import axios from 'axios';
+import { styled } from "@mui/material/styles";
+
+const LogoutButton = styled(Button)({
+  "&:hover": {
+    color: "red",
+  },
+});
 
 /**
  * ! Most important -> wasted lots of time and low sleep due to this small mistake
@@ -39,9 +46,9 @@ function Layout() {
                 Home
             </Button>
 
-            <Button color="inherit" onClick={() => logoutHandler()}>
+            <LogoutButton color="inherit" onClick={() => logoutHandler()}>
                 Logout
-            </Button>
+            </LogoutButton>
         </Toolbar>
       </AppBar>
 
