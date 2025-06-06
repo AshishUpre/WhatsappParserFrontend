@@ -16,7 +16,7 @@ const LogoutButton = styled(Button)({
  * * but in pose, we can send body hence { withCredentials: true } is 3rd arg
  */
 const logoutHandler = () => {
-    console.log("API URL: ", `${import.meta.env.VITE_API_BASE_URL}/user/logout`);
+    // console.log("API URL: ", `${import.meta.env.VITE_API_BASE_URL}/user/logout`);
     axios.post(`${import.meta.env.VITE_API_BASE_URL}/user/logout`,{}, { withCredentials: true })
         .then(() => {
             localStorage.clear("user");
