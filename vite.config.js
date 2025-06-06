@@ -7,6 +7,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    // if running locally, proxy requests to backend
     server: isLocal
       ? {
           proxy: {

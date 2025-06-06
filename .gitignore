@@ -1,5 +1,5 @@
 .env
-.env.*
+
 WPkeypair.pem
 README.md 
 

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetchFiles from '../hooks/useFetchFiles';
 import { Container, List, ListItem, ListItemText, Button, CircularProgress, Alert } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const UserFiles = () => {
     const { files, error, loading, fetchFiles } = useFetchFiles();
@@ -13,6 +14,20 @@ const UserFiles = () => {
             navigate(`/chat/${fileId}`);
         }
     };
+
+    const handleDelete = async (fileId) => {
+        if (!window.confirm("Are you sure you want to delete this file? The corresponding chats will also be deleted and this can't be undone")) return;
+        try {
+            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/drive/${fileId}`, { method: "DELETE", credentials: "include" });
+            if (!res.ok) throw new Error("Failed to delete file");
+            const respText = await res.text()
+            console.log("response of delete is : ", respText);
+            fetchFiles(); // Refresh the list
+        } catch (err) {
+            alert("Error deleting file: " + err.message);
+        }
+    };
+    
 
     useEffect(() => {
         fetchFiles();
@@ -32,16 +47,30 @@ const UserFiles = () => {
                 <p>No files found.</p>
             ) : (
                 <List>
-                    {files.map((file, index) => (
-                        <ListItem 
-                            key={index} 
-                            button="true"
-                            selected={file.second === fileDriveId}
-                            onClick={() => handleFileClick(file.second)}
+                {files.map((file, index) => (
+                    <ListItem
+                    key={index}
+                    selected={file.second === fileDriveId}
+                    secondaryAction={
+                        <Button
+                        variant="outlined"
+                        color="error"
+                        size="small"
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            handleDelete(file.second)
+                        }}
+                        startIcon={<DeleteIcon />}
                         >
-                            <ListItemText primary={file.first} />
-                        </ListItem>
-                    ))}
+                        Delete
+                        </Button>
+                    }
+                    button
+                    onClick={() => handleFileClick(file.second)}
+                    >
+                    <ListItemText primary={file.first} />
+                    </ListItem>
+                ))}
                 </List>
             )}
         </Container>
