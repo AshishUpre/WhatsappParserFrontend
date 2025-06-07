@@ -17,3 +17,7 @@ Build using
 Copy to EC2 using
 
     scp -i WPkeypair.pem  -r dist/* <username>@<EC2_url>:<dir_on_ec2>
+
+### Thanks
+- [ChatViewer backgrounds are from](https://gist.github.com/abdurrahmanekr/2747d704edec93a06e454eba2653e0df)
+- 

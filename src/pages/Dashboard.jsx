@@ -65,7 +65,7 @@ function Dashboard() {
               {user.email}
             </Typography>
 
-            <UserFiles />
+            <UserFiles showDeleteButtons={true}/>
           </>
         ) : (
           <CircularProgress />

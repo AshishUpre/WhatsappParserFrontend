@@ -4,7 +4,7 @@ import useFetchFiles from '../hooks/useFetchFiles';
 import { Container, List, ListItem, ListItemText, Button, CircularProgress, Alert } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const UserFiles = () => {
+const UserFiles = ({ showDeleteButtons }) => {
     const { files, error, loading, fetchFiles } = useFetchFiles();
     const { fileDriveId } = useParams();
     const navigate = useNavigate();
@@ -51,7 +51,7 @@ const UserFiles = () => {
                     <ListItem
                     key={index}
                     selected={file.second === fileDriveId}
-                    secondaryAction={
+                    secondaryAction = { showDeleteButtons ? (
                         <Button
                         variant="outlined"
                         color="error"
@@ -64,7 +64,7 @@ const UserFiles = () => {
                         >
                         Delete
                         </Button>
-                    }
+                    ) : null}
                     button
                     onClick={() => handleFileClick(file.second)}
                     >

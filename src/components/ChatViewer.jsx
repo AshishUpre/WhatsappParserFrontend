@@ -173,7 +173,7 @@ const ChatViewer = () => {
 
                     {/* User Files Section */}
                     <div className={styles.userFilesContainer}>
-                        <UserFiles />
+                        <UserFiles showDeleteButtons = {false} />
                     </div>
                 </div>
             </div>
