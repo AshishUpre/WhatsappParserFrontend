@@ -1,7 +1,7 @@
 .env
 
 WPkeypair.pem
-README.md 
+HELP.md
 
 # Logs
 logs
@@ -17,6 +17,7 @@ node_modules
 dist
 dist-ssr
 *.local
+.git
 
 # Editor directories and files
 .vscode/*
