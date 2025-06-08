@@ -38,7 +38,7 @@ const FileUploader = () => {
             setProgress(10);
 
             const response = await axios.post(
-                `${import.meta.env.VITE_API_BASE_URL}/drive/upload`,
+                `${import.meta.env.VITE_API_BASE_URL}/files/upload`,
                 formData,
                 {
                     withCredentials: true,

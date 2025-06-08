@@ -18,7 +18,7 @@ const UserFiles = ({ showDeleteButtons }) => {
     const handleDelete = async (fileId) => {
         if (!window.confirm("Are you sure you want to delete this file? The corresponding chats will also be deleted and this can't be undone")) return;
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/drive/${fileId}`, { method: "DELETE", credentials: "include" });
+            const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/files/${fileId}`, { method: "DELETE", credentials: "include" });
             if (!res.ok) throw new Error("Failed to delete file");
             const respText = await res.text()
             console.log("response of delete is : ", respText);
